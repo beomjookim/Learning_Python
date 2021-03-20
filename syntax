@@ -21,16 +21,14 @@ print ("우리 집 동물 종류는 " , animal , "가지입니다.")
 cast는, C++의 (int) s 와 달리 걍 int(s) 식으로 해준다.
 
 3. 연산자와 수식:
-제곱은 x**y. pow도 똑같이 있다. 다만 library 불필요.
-abs,  max, min, round 연산자도 있다. 역시나 library 없이 걍 쓰면 됨.
+제곱은 x**y. pow도 똑같이 있다. abs,  max, min, round 연산자도 있다. library 없이 걍 쓰면 됨.
 not 연산자도 있다. 그냥 1 != 3 은 true인데 not(1 != 3)은 false임.
-and 연산자도 있다. 또는 &. C++의 && 와 같다. 헛갈릴 수 있다.
-or 연산자도 있다. 또는 |. C++의 || 와 같다. 또한 헛갈릴 수 있다.
-몫은 5//3 이렇게. C++에서는 걍 /해주면 되는데. 신-기
+and 연산자도 있다. C++의 && 와 같다. or 연산자도 있다. C++의 || 와 같다.
+몫은 5//3 이렇게. C++에서는 걍 /해주면 되는데. 여기선 5/3해주면 1.6666의 float값이 나온다. 신-기
 
 4. library 사용:
 from math import *   해석하면 #include <math>. 물론 c++에서는 cmath 사용.
-flor, ceil, sqrt 는 c++과 동일하게 사용.
+floor, ceil, sqrt 는 c++과 동일하게 사용.
 from random import *   난수. 
 print(random())   0.0 ~ 1.0 사이의 임의의 값 출력.
 
@@ -46,7 +44,7 @@ print(sentence[-4:])  인덱스 기준 뒤에서 4번째부터 끝까지.
 print(sentence.lower())     tolower와 같음.
 print(sentence.upper())     toupper와 같음.
 print(sentence[0].isupper)
-print(len(sentence))        length.python과 같음.
+print(len(sentence))        length.sentence와 같음.
 print(sentence.replace("abc", "def"))   C++의  replace 함수는 노답.
 index = sentence.index("n")   sentence에서 n의 인덱스 찾기. 
     근데 n 첫 번째 거 말고 뒤에 거 원하면 sentence.index("n", index +1)
@@ -54,5 +52,33 @@ index = sentence.index("n")   sentence에서 n의 인덱스 찾기.
 find도 index와 똑같은 녀석. 근데 find는 찾는 게 없으면 -1, index는 에러 뜸.
 sentence.count("n")은 n의 개수 반환.
 
-5 -4. /// 4-4부터 시작.
-'''
+5 -4. 문자열 포맷
+print("a" + "b")        ab 출력.   모두 str로 형 변환 해줘야 함.
+print ("a", "b")        a b 출력.  굳이 형변환해주지 않아도 된다는 것.
+print("나는 %d살입니다." %20)             %d는 int 꼴
+print("나는 %s을 좋아해요." %"파이썬")     %s는 string 꼴
+print("Apple은 %c로 시작해요." % "A")     %c는 char 꼴
+# %s는 string뿐 아니라 만능, 그 어떤 걸 넣어도 됨.
+print("나는 %s색과 %s색을 좋아해요" %("파란", "빨간"))
+
+print("나는 {}살입니다." .format(20))
+print("나는 {}색과 {}색을 좋아해요" .format("파란", "빨간"))
+print("나는 {1}색과 {0}색을 좋아해요" .format("파란", "빨간"))    #중괄호 안의 숫자는 뒤의 format 상의 순서의 element.
+print("나는{age}살이며, {color}색을 좋아해요" .format(age = 20, color="빨간"))   #중괄호 속의 변수를 부름.
+
+\n은 줄바꿈. \" \"은 그대로 출력하기. \\는 문장 내에서 \를 출력. \r은 커서를 앞으로 이동. \b는 백스페이스. \t는 탭.
+
+6. 리스트(= 업그레이드 버전 배열)
+subway = [123, 234, 345]
+단순히 print(subway) 를 컴파일하면 [123, 234, 345] 이 출력됨.
+index       print(subway.index(234)]) 를 하면 해당 인덱스 1이 출력됨.
+append      print(subway.append(456)) 를 하면 그냥 vector.push_back(456)과 같다.
+pop         subway.pop()은 마지막 녀석 제거.
+count       subway.count(123)은 123이 몇 번 나오는지.
+sort        subway.sort()
+reverse     subway.reverse()
+clear       subway.clear()
+extend      subway.extend(subday) 하면 + 됨.
+    ☆ 레전드급으로 신나는 함수는 insert 함수다. 분명 배열은 중간에 삽입이 안 되는데
+insert      subway.insert(1, 111) 해주면 기존의 123과 234 사이에 111을 넣어준다. 황-홀.
+    ☆ 그리고 또 하나의 레전드. 여러 개의 자료형을 하나의 리스트에 함께 저장 가능하다.
