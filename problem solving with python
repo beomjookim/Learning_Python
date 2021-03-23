@@ -1,1 +1,12 @@
+<시저 암호>
+isupper() 함수와 islower() 함수 활용해주기.
+C++ 에서는 ASCII code로 따로 변환해주지 않아도 알아서 컴파일러가 변환 즉, char - 1 같은 것들이 가능하지만, python에서는 형 변환을 해 줘야 함.
+char를 ASCII로 변환할 때에는 ord()를, ASCII를 char로 변환할 때에는 chr()를 사용해주면 된다.
 
+<나누어 떨어지는 숫자 배열>
+sorted(answer)과 answer.sort()의 각각의 활용을 잘 고려해서 하도록.
+
+<문자열 내 p와 y의 개수>
+s.lower().count('p')를 쓰면 엄청나게 단축됨.
+
+<>
