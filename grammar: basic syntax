@@ -1,0 +1,105 @@
+Beomjoo Jayden Kim - Studying_Python
+
+Disclaimer: 가독성을 높이려기보다는 개인화에 집중하였으므로 타인이 내용을 이해하기에는 최적이 아닐 수 있다.
+
+아래는 공부가 진행되는 경과와, 중요한 대목들을 요약한 내용.
+syntax와 몇 개의 function을 제외하면 두 언어가 대동소이하므로, C++과 python이 서로 다른 부분만을 확인해가면서 공부하는 것이 가장 효율적이라는 결론을 내렸다.
+'혼공파' 목차 상 8개의 챕터로 구성되어 있는데, 첫 6개의 챕터는 하루에 하나씩 다루고 끝 두 개의 챕터를 사나흘에 걸쳐 다뤄 결과적으로 2주 안에 이 책을 독파하는 것을 목표로 한다.
+
+※ 작성 중 유의사항: Indent Mode를 tabs로 두면 tab을 사용하고 바로 글을 이어 쓰면 글을 쓰고 나서 스페이스 누르는 순간 글이 사라지는 불쾌한 일을 겪게 된다. Indent를 spaces로 두자.
+
+21.03.22.   [p2 ~ p105]
+Chapter 01, 02. STARTING PYTHON & DATA
+
+● 주석:         C++        Python
+한 줄 주석       //         #           
+여러 줄 주석     /* */      """/'''
+★ 전체 주석화: 그냥 해당 부분 전체 드래그 후 crtl + /
+
+● 자료형:
+int bool string char 다 있지만 사용법이 약간 다름.
+int animal = 4;     는 animal = 4   로 표현. 자료형 명시 X ; 안 붙이고.
+bool is_adult() {if(age>=3) true}   는 걍 is_adult = age >= 3    으로 표현.
+
+print ("우리 집 동물 종류는 " + animal + "가지입니다.")
+에서 위 처럼 표현하면 안 됨. animal이 string이 아니므로 형변환 str(animal) 꼭 해줘야.
+print ("우리 집 동물 종류는 " + str(animal) + "가지입니다.")
+그리고, + 대신 , 사용 가능. 이때는 str function 없이 즉,
+print ("우리 집 동물 종류는 " , animal , "가지입니다.")
+도 똑같이 유효한 표현.
+
+cast는, C++의 (int) s 와 달리 걍 int(s) 식으로 해준다.
+C++보다는 훨씬 유연하게 형변환이 가능하다. 그러나,
+int("안녕하세요") 나 int("52.3")과 같은 경우는 ValueError를 반환한다. 한 번만에 변환이 가능해야만 cast가 성립한다.
+
+파이썬의 유연성: 파이썬은 기본적으로 변수를 사용할 때 변수의 자료형을 미리 선언 안 한다. 그래서 아래와 같은 요술?이 가능하다.
+a = 1, a = "말도 안 돼!", a = 1.5
+유연하기 때문에 좋다고 할 수도 있겠지만, 동시에 TypeError를 유발할 가능성도 커질 것으로 보인다.
+
+● 연산자와 수식:
+제곱은 x**y. pow도 똑같이 있다. abs,  max, min, round 연산자도 있다. library 없이 걍 쓰면 됨.
+not 연산자도 있다. 그냥 1 != 3 은 true인데 not(1 != 3)은 false임.
+and 연산자도 있다. C++의 && 와 같다. or 연산자도 있다. C++의 || 와 같다.
+몫은 5//3 이렇게. C++에서는 걍 /해주면 되는데. 여기선 5/3해주면 1.6666의 float값이 나온다. 신-기
+
+● library 사용:
+from math import *   해석하면 #include <math>. 물론 c++에서는 cmath 사용.
+floor, ceil, sqrt 는 c++과 동일하게 사용.
+from random import *   난수. 
+print(random())   0.0 ~ 1.0 사이의 임의의 값 출력.
+
+● -1. 문자열:
+기본적으로 ''와 "" 사이의 차이가 없다 그리고 아까 주석이라 했던 """도 string으로 인정!!
+
+● -2. 슬라이싱:
+sentence = "blah blah"
+print(sentence[3:5])  인덱스 기준 3 이상 5 미만 글자 다 가져옴.
+print(sentence[-4:])  인덱스 기준 뒤에서 4번째부터 끝까지.
+
+● -3. 문자열 처리 함수:
+print(sentence.lower())     tolower와 비슷.
+print(sentence.upper())     toupper와 비슷.        // upper/lower과 tolower/toupper 함수는 결과물은 비슷하지만, upper와 lower는 비파괴적 함수라는 점이 다르다.
+print(sentence[0].isupper)
+print(len(sentence))        length.sentence와 같음.
+print(sentence.replace("abc", "def"))   C++의  replace 함수는 노답.
+index = sentence.index("n")   sentence에서 n의 인덱스 찾기. 
+    근데 n 첫 번째 거 말고 뒤에 거 원하면 sentence.index("n", index +1)
+뒤의 index + 1 은 시작점.
+find도 index와 똑같은 녀석. 근데 find는 찾는 게 없으면 -1, index는 에러 뜸.
+sentence.count("n")은 n의 개수 반환.
+
+● 사용자 입력: input()
+input 함수로 사용자 입력받기
+다른 언어에서도 마찬가지지만, input함수는 항상 출력과 입력과 block 기능을 모두 가지고 있음으로 인한 헛갈림을 야기할 수 있다.
+>>> input("인사말을 입력하세요!")
+단순히 이렇게 쓰기만 하면, 인사말을 입력하세요! 를 출력하고 컴파일을 순간적으로 중단(block)하여 input을 받을 준비를 한다.
+중요한 것은, input을 통해 받은 데이터는 123이건 "kim"이건 무조건 string 형식인 것이다.
+
+● -4. 문자열 포맷
+print("a" + "b")        ab 출력.   모두 str로 형 변환 해줘야 함.
+print ("a", "b")        a b 출력.  굳이 형변환해주지 않아도 된다는 것.
+print("나는 %d살입니다." %20)             %d는 int 꼴
+print("나는 %s을 좋아해요." %"파이썬")     %s는 string 꼴
+print("Apple은 %c로 시작해요." % "A")     %c는 char 꼴
+# %s는 string뿐 아니라 만능, 그 어떤 걸 넣어도 됨.
+print("나는 %s색과 %s색을 좋아해요" %("파란", "빨간"))
+
+print("나는 {}살입니다." .format(20))
+print("나는 {}색과 {}색을 좋아해요" .format("파란", "빨간"))
+print("나는 {1}색과 {0}색을 좋아해요" .format("파란", "빨간"))    #중괄호 안의 숫자는 뒤의 format 상의 순서의 element.
+print("나는{age}살이며, {color}색을 좋아해요" .format(age = 20, color="빨간"))   #중괄호 속의 변수를 부름.
+format의 경우 {}의 개수가 함수의 매개변수의 개수보다 많으면 IndexError를 반환하지만 그 반대의 경우는 문제가 없다.
+
+그리고 포맷을 다루는 데에 있어서, 디테일에 특별히 신경써줘야 하는 부분이 있다.
+p95 - p99에 해당하는 부분인데, 이 부분은 외우기보다는 필요 시에 꺼내쓰도록 하자.
+추가로,
+strip()     문자열 양옆의 공백 제거
+isseries()  isalnum(), isalpha(), isidentifier(), isdecimal(), isdigit(), isspace() 등의 판별함수도 있다.
+
+문자열을 찾을 때는 find()와 rfind() 함수가 있다. find()는 왼쪽부터, rfind()는 오른쪽부터 찾아서 처음 등장하는 위치를 찾는다.
+문자열 내부에 어떤 문자열이 있는지 확인하려면 in연산자를 사용한다. 출력은 True 또는 False로. ex) "안녕" in "안녕하세요" returns: True
+문자열을 자를 때: a = "10 20 30 40 50".split(" ") print(a)를 해주면 공백을 기준으로 주어진 녀석을 잘라, ['10', '20', '30', '40', '50'] 이러한 list를 반환한다.
+
+\n은 줄바꿈. \" \"은 그대로 출력하기. \\는 문장 내에서 \를 출력. \r은 커서를 앞으로 이동. \b는 백스페이스. \t는 탭.
+
+<챕터 1, 2 >
