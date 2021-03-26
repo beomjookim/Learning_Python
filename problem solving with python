@@ -75,10 +75,18 @@ for c in str(n): v.append(c) 해줄 필요없이 걍 list(str(n)) 해주면 됨!
 만약 순서가 중요하다면 permutations을 써주면 되고. 두 개 다 itertools 라는 모듈에 위치하므로 import 해줘야 함.
 2. 소수를 만들 때는 에라토스테네스의 체를 쓴다. 나중에 디테일에 주목하자.
 
-
-
 <신규 아이디 추천>
+첫 인상은 길이는 길지만 상당히 쉬운 문제라고 생각됐는데 C++과 Python 두 언어에서 모두 syntax 에러를 극복하지 못했다.
+python 문법을 활용하는 좋은 예시들이 상당히 많다. 외우고 체화하자.
 
+    new_id = new_id.lower()
+    for c in new_id:
+        if c.isalpha() or c.isdigit() or c in ['-', '_', '.']: answer += c
+    while '..' in answer: answer = answer.replace('..', '.')
+    while len(answer) < 3:
+        answer += answer[-1]
+    return answer
+    
 <소수 찾기>
 
 <실패율>
