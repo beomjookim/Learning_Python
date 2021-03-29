@@ -6,20 +6,21 @@ Chapter 07 (고급 01). MODULES
 
 기본적으로 Python은 Module 이라는 기능을 활용, 코드를 분리하고 공유함.
 표준 모듈: 파이썬에 기본적으로 내장되어 있는 모듈, 외부 모듈: 그 외에 다른 사람들이 만들어 공개한 모듈.
-※ 표준 모듈은 이미 만들어져있기 때문에 이름과 쓰임새, 그 내부에 있는 함수 등을 관심있게 보면 되고, 외부 모듈은 필요에 따라서 생성 및 관리하는 방법 숙지하면 됨.
+※ 표준 모듈은 이미 만들어져있기 때문에 이름과 쓰임새, 그 내부에 있는 함수 등을 관심있게 보면 되고, 외부 모듈은 필요에 따라서 갖다쓰거나 생성 및 관리하는 방법 숙지하면 됨.
 
 import 모듈 이름: 그냥 해당 모듈 안에 있는 모든 함수 사용 가능하다. 그런데 매번 "모듈 이름.함수()" 이렇게 써줘야한다. 이게 불편하면 자주 사용하는 함수에 한해
 from 모듈 이름 import 함수 이름: 이렇게 특정하면 모듈 이름 제외하고 함수이름만으로 계속 부를 수 있다. 그런데 여러 개의 함수를 조금씩만 사용한다면 그냥
-import 모듈 as 사용하고 싶은 식별자: 를 사용해서 단축할 수 있다. (ex. import math as m)
+import 모듈 as 사용하고 싶은 식별자: 모듈 이름을 단축할 수 있다. (ex. import math as m)
 
 기본적인 표준 모듈들: math, random, sys, os, datetime, time, urllib 등.
 
-math 모듈: sin(x) cos(x) tan(x) ceil(x) floor(x) log(x) log2(x) log10(x) 등이 있음. 이미 아는 함수들이므로 디테일 생략.
-random 모듈: 
-    랜덤한 값을 생성할 때 사용하는 모듈. random()- 0.0 이상 1.0 미만의 float, uniform(min, max)- 지정 범위 사이의 float, randrange(min, max)- 지정 범위의 int, 
-                                        choice(list)- list 내부의 요소를 랜덤하게 선택, shuffle(list)- list 요소들을 랜덤하게 섞음, sample(list, k=숫자)- list 요소 중 k개 뽑음.
+math 모듈: sin(x) cos(x) tan(x) ceil(x) floor(x) log(x) log2(x) log10(x) 등이 있음. 이미 아는 함수들이므로 디테일 생략. 대부분의 math 함수들은 모듈 없이 사용이 가능하다.
+
+random 모듈: 랜덤한 값을 생성할 때 사용하는 모듈. 
+             random()- 0.0 이상 1.0 미만의 float, uniform(min, max)- 지정 범위 사이의 float, randrange(min, max)- 지정 범위의 int, <----- 자료형 구분 잘해줘야 한다.
+             choice(list)- list 내부의 요소를 랜덤하게 선택, shuffle(list)- list 요소들을 랜덤하게 섞음, sample(list, k=숫자)- list 요소 중 k개 뽑음.
 sys 모듈:
-    시스템과 관련된 정보를 가지고 있는 모듈. 명령 매개변수를 받을 때 많이 사용됨.
+    시스템과 관련된 정보를 가지고 있는 모듈. 명령 매개변수를 받을 때 많이 사용됨. 
     명령 매개변수란? 프로그램을 실행할 때 추가로 입력하는 값들. 디테일은 나중에 다시 go over 하는 걸로.
     
 os 모듈:
@@ -31,7 +32,7 @@ datetime 모듈:
     datetime.datetime.now(), year, month, day, hour, minute, second 등의 변수들이 있다.
     
 time 모듈:
-    날짜와 관련된 기능과 시각과 관련된 기능은 datetime을 주로 사용하고, time은 시각에 관련된 기능에 주로 사용된다. 그 중에서도 import time의 sleep() 함수가 자주 사용된다.
+    날짜와 관련된 기능과 '시각'과 관련된 기능은 datetime을 주로 사용하고, time은 '시간'에 관련된 기능에 주로 사용된다. 그 중에서도 import time의 sleep() 함수가 자주 사용된다.
 
 urllib 모듈:
     URL을 다루는 라이브러리. URL은 네트워크의 자원이 어디에 위치하는지 확인할 때 사용하는 것. 일반적으로 주소창의 주소를 일컫기도 한다.
