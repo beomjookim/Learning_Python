@@ -1,6 +1,5 @@
 # Studying_Python
-Studying python for object detecting AI project
--> during an Software Engineering Internship done at H&T solutions
+Studying python for object-detecting AI project done during Software Engineering Internship at H&T Solutions
 
 Internship period: Mar. 2021 - (weeks)
 
